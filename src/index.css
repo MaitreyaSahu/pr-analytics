@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,9 +9,42 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: whitesmoke;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a {
+  color: #1a73e8; /* Blue color */
+  background-color: rgba(26, 115, 232, 0.1); /* Faded blue background */
+  padding: 2px 4px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: monospace; /* Monospace font */
+}
+
+a:hover {
+  background-color: rgba(26, 115, 232, 0.2); /* Darker faded blue on hover */
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px; /* Reduced width */
+}
+
+::-webkit-scrollbar-track {
+  background: #f9f9f9; /* Lighter background color */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bbb; /* Lighter thumb color */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #999; /* Lighter hover color */
 }
