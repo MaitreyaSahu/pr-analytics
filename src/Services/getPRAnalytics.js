@@ -1,0 +1,36 @@
+const createData = (id, title, createdBy, rating, status) => {
+  return { id, title, createdBy, rating, status };
+};
+
+export const PRAnalytics = [
+  createData(1, "Fix bug in authentication", "Alice", 4, "Open"),
+  createData(2, "Add new feature", "Bob", 5, "Merged"),
+  createData(3, "Improve performance", "Charlie", 3, "Closed"),
+  createData(4, "Update documentation", "David", 4, "Open"),
+  createData(5, "Refactor codebase", "Eve", 5, "Merged"),
+  createData(6, "Fix UI issues", "Frank", 2, "Closed"),
+  createData(7, "Optimize database", "Grace", 3, "Open"),
+  createData(8, "Add unit tests", "Heidi", 4, "Merged"),
+  createData(9, "Improve accessibility", "Ivan", 5, "Closed"),
+  createData(10, "Fix security vulnerabilities", "Judy", 4, "Open"),
+  createData(11, "Enhance UI design", "Kevin", 3, "Open"),
+  createData(12, "Add dark mode", "Laura", 5, "Merged"),
+  createData(13, "Fix memory leak", "Mike", 2, "Closed"),
+  createData(14, "Improve logging", "Nina", 4, "Open"),
+  createData(15, "Update dependencies", "Oscar", 5, "Merged"),
+  createData(16, "Fix crash on startup", "Paul", 1, "Closed"),
+  createData(17, "Add search functionality", "Quincy", 4, "Open"),
+  createData(18, "Improve error handling", "Rachel", 5, "Merged"),
+  createData(19, "Fix typo in README", "Steve", 3, "Closed"),
+  createData(20, "Add CI/CD pipeline", "Tina", 4, "Open"),
+  createData(21, "Optimize images", "Uma", 5, "Merged"),
+  createData(22, "Fix broken links", "Victor", 2, "Closed"),
+  createData(23, "Improve SEO", "Wendy", 4, "Open"),
+  createData(24, "Add analytics tracking", "Xander", 5, "Merged"),
+  createData(25, "Fix CSS issues", "Yara", 3, "Closed"),
+  createData(26, "Enhance security", "Zane", 4, "Open"),
+  createData(27, "Add multi-language support", "Amy", 5, "Merged"),
+  createData(28, "Fix database migration", "Brian", 2, "Closed"),
+  createData(29, "Improve API performance", "Cathy", 4, "Open"),
+  createData(30, "Add user roles", "Derek", 5, "Merged"),
+];

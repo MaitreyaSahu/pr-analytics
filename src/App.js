@@ -20,6 +20,10 @@ import { ArrowRight } from "lucide-react";
 import logo from "./logo.svg";
 import "./index.css";
 import { items } from "./Services/getTimeLineReport";
+import CustomActiveShapePieChart from "./CustomActiveShapePieChart";
+import { AgingList } from "./AgingList";
+import { PRAnalytics } from "./PRAnalytics";
+import { Autocomplete } from "@mui/material";
 
 function App() {
   const [filter, setFilter] = useState("");
@@ -37,6 +41,18 @@ function App() {
     setOpen((prevOpen) => ({ ...prevOpen, [index]: !prevOpen[index] }));
   };
 
+  const mergedCount = items.filter(
+    (item) => item.unmergedPRs.length === 0
+  ).length;
+  const unmergedCount = items.filter(
+    (item) => item.unmergedPRs.length > 0
+  ).length;
+
+  const data = [
+    { name: "Merged Repos", value: mergedCount, color: "#00C49F" },
+    { name: "Unmerged Repos", value: unmergedCount, color: "#FF8042" },
+  ];
+
   return (
     <div className="App w-screen h-screen flex flex-col">
       <AppBar
@@ -47,175 +63,54 @@ function App() {
           borderBottom: "1px solid #ccc",
         }}
       >
-        <Toolbar>
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <Typography variant="h6" color="primary">
-            My App
+            PR Analytics
           </Typography>
+          <div className="flex gap-2 items-center">
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={[]}
+              size="small"
+              sx={{ width: 200 }}
+              renderInput={(params) => (
+                <TextField {...params} label="Project" variant="standard" />
+              )}
+            />
+            <Avatar
+              alt="Remy Sharp"
+              sx={{ width: 30, height: 30, marginLeft: 2 }}
+            />
+          </div>
         </Toolbar>
       </AppBar>
+
       <div className="w-full h-full overflow-auto flex p-2 gap-2">
-        {/* <div></div> */}
-        <Card sx={{ width: "100%", maxWidth: 400, height: "100%" }}>
-          <CardContent sx={{ height: "100%", p: 2, pr: 1 }}>
-            <Typography variant="h6" sx={{ marginBottom: 2 }}>
-              Merge Timeline
-            </Typography>
-            <TextField
-              label="Filter"
-              variant="outlined"
-              fullWidth
-              value={filter}
-              onChange={(e) => setFilter(e.target.value)}
-              size="small"
-              autoComplete="off" // Disable browser text suggestions
-              sx={{ marginBottom: 2, maxWidth: 360 }}
-            />
-            <div className="overflow-y-auto pr-1 h-full">
-              <List
-                sx={{
-                  width: "100%",
-                  maxWidth: 360,
-                  bgcolor: "background.paper",
-                }}
-              >
-                {filteredItems.map((item, index) => (
-                  <React.Fragment key={index}>
-                    <ListItem
-                      sx={{
-                        p: 1,
-                        mt: 1,
-                        backgroundColor: item.unmergedPRs.length
-                          ? "rgba(255, 0, 0, 0.05)" // Lighter red
-                          : "rgba(0, 255, 0, 0.05)", // Lighter green
-                        "&:hover": {
-                          backgroundColor: item.unmergedPRs.length
-                            ? "rgba(255, 0, 0, 0.1)" // Lighter red on hover
-                            : "rgba(0, 255, 0, 0.1)", // Lighter green on hover
-                        },
-                      }}
-                      alignItems="flex-start"
-                      button
-                      onClick={() => handleClick(index)}
-                    >
-                      <ListItemText
-                        primary={
-                          <div className="flex justify-between">
-                            <Typography
-                              variant="h6"
-                              sx={{
-                                color: item.unmergedPRs.length
-                                  ? "rgba(255, 0, 0, 0.8)"
-                                  : "inherit",
-                                opacity: item.unmergedPRs.length
-                                  ? "0.8"
-                                  : "inherit",
-                              }}
-                            >
-                              {item.repoName}
-                            </Typography>
-                            {item.unmergedPRs.length ? (
-                              <Chip
-                                sx={{
-                                  color: "rgba(255, 0, 0, 0.8)",
-                                  borderColor: "rgba(255, 0, 0, 0.2)",
-                                  opacity: 0.8,
-                                }}
-                                label={`${item.unmergedPRs.length} unmerged PRs`}
-                                color="red"
-                                variant="outlined"
-                              />
-                            ) : null}
-                          </div>
-                        }
-                        secondary={
-                          <React.Fragment>
-                            <div className="w-full overflow-hidden whitespace-nowrap text-ellipsis">
-                              Last merged to master:
-                            </div>
-                            <div className="flex">
-                              <div className="overflow-hidden whitespace-nowrap text-ellipsis">
-                                <a
-                                  href={`https://example.com/branches/${item.LastMergedToMaster.branchName}`}
-                                  title={item.LastMergedToMaster.branchName}
-                                >
-                                  {item.LastMergedToMaster.branchName}
-                                </a>
-                              </div>
-                              <div className="flex-shrink-0 ml-1">
-                                {" on " + item.LastMergedToMaster.mergedOn}
-                              </div>
-                            </div>
-                          </React.Fragment>
-                        }
-                      />
-                      {item.unmergedPRs.length > 0 &&
-                        (open[index] ? <ExpandLess /> : <ExpandMore />)}
-                    </ListItem>
-                    {item.unmergedPRs.length > 0 && (
-                      <Collapse in={open[index]} timeout="auto" unmountOnExit>
-                        <List
-                          component="div"
-                          disablePadding
-                          sx={{
-                            p: 1,
-                            backgroundColor: "rgba(255, 0, 0, 0.05)", // Lighter red
-                            "&:hover": {
-                              backgroundColor: "rgba(255, 0, 0, 0.1)", // Lighter red on hover
-                            },
-                          }}
-                        >
-                          {item.unmergedPRs.map((pr, prIndex) => (
-                            <ListItem key={prIndex} sx={{ pl: 4 }}>
-                              <ListItemText
-                                primary={
-                                  <a
-                                    href={`https://example.com/prs/${pr.prId}`}
-                                  >
-                                    {pr.prName}
-                                  </a>
-                                }
-                                secondary={
-                                  <React.Fragment>
-                                    <Typography
-                                      component="span"
-                                      variant="body2"
-                                      sx={{
-                                        color: "text.primary",
-                                        display: "inline",
-                                      }}
-                                    >
-                                      PR ID: {pr.prId}
-                                    </Typography>
-                                    {" — Source Branch: "}
-                                    <a
-                                      href={`https://example.com/branches/${pr.srcBranchName}`}
-                                    >
-                                      {pr.srcBranchName}
-                                    </a>
-                                    {" — Target Branch: "}
-                                    <a
-                                      href={`https://example.com/branches/${pr.trgBranchName}`}
-                                    >
-                                      {pr.trgBranchName}
-                                    </a>
-                                    {" — Created On: " + pr.createdOn}
-                                  </React.Fragment>
-                                }
-                              />
-                            </ListItem>
-                          ))}
-                        </List>
-                      </Collapse>
-                    )}
-                  </React.Fragment>
-                ))}
-              </List>
-            </div>
-          </CardContent>
-        </Card>
+        <div>
+          {/* <Card>
+            <CardContent sx={{ p: 2, height: "300px" }}>
+              <CustomActiveShapePieChart data={data} />
+            </CardContent>
+          </Card> */}
+          <Card sx={{ width: "100%", maxWidth: 400, height: "100%" }}>
+            <CardContent sx={{ height: "100%", p: 2, pr: 1 }}>
+              <AgingList items={items} />
+            </CardContent>
+          </Card>
+        </div>
 
         <Card sx={{ width: "100%", height: "100%" }}>
-          <CardContent sx={{ height: "100%", p: 2, pr: 1 }}>hi</CardContent>
+          <CardContent sx={{ height: "100%", p: 2, pr: 1 }}>
+            <PRAnalytics />
+            {/* <CustomActiveShapePieChart data={data} /> */}
+          </CardContent>
         </Card>
       </div>
     </div>
