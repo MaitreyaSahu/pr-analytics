@@ -26,6 +26,7 @@ import { Autocomplete } from "@mui/material";
 import ReleaseBranchTracker from "./Components/TimeLine/ReleaseBranchTracker";
 import AppBar from "./Components/TimeLine/AppBar";
 import Leaderboard from "./Components/TimeLine/Leaderboard";
+import PRAnalyticsDashboard from "./Components/TimeLine/PRAnalyticsDashboard";
 
 function App() {
   const [filter, setFilter] = useState("");
@@ -66,14 +67,12 @@ function App() {
             {/* <CustomActiveShapePieChart data={data} /> */}
           </CardContent>
         </Card>
-        <Card sx={{ width: "4500px", height: "100%" }}>
+        <Card sx={{ width: "5000px", height: "100%" }}>
           <CardContent sx={{ height: "100%", p: 2, pr: 1 }}>
-            {/* <PRAnalytics /> */}
-            <ReleaseBranchTracker />
-            {/* <CustomActiveShapePieChart data={data} /> */}
+            <PRAnalyticsDashboard />
           </CardContent>
         </Card>
-        <div className="overflow-y-auto w-full mr-2">
+        <div className="overflow-y-auto w-full mr-1">
           <Card sx={{}}>
             <CardContent sx={{ p: 2 }}>
               <Leaderboard name="Developer" />

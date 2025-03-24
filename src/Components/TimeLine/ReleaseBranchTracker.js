@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { ChevronDown, ChevronRight } from "lucide-react";
-
 const releases = [
   { name: "release/1.1", date: "2024-03-15" },
   { name: "release/1.0", date: "2024-02-10" },
@@ -17,6 +16,76 @@ const data = [
   {
     repo: "repo-2",
     branches: [{ name: "hotfix/2.0", merged: true, mergedAt: "2024-02-20" }],
+  },
+  {
+    repo: "repo-3",
+    branches: [
+      { name: "release/1.0", merged: true, mergedAt: "2024-03-05" },
+      { name: "release/1.1", merged: false, createdAt: "2024-03-12" },
+    ],
+  },
+  {
+    repo: "repo-4",
+    branches: [
+      { name: "release/1.0", merged: true, mergedAt: "2024-03-08" },
+      { name: "release/1.1", merged: false, createdAt: "2024-03-14" },
+    ],
+  },
+  {
+    repo: "repo-5",
+    branches: [
+      { name: "release/1.0", merged: true, mergedAt: "2024-03-09" },
+      { name: "release/1.1", merged: false, createdAt: "2024-03-16" },
+    ],
+  },
+  {
+    repo: "repo-6",
+    branches: [
+      { name: "release/1.0", merged: true, mergedAt: "2024-03-07" },
+      { name: "release/1.1", merged: false, createdAt: "2024-03-13" },
+    ],
+  },
+  {
+    repo: "repo-7",
+    branches: [
+      { name: "release/1.0", merged: true, mergedAt: "2024-03-06" },
+      { name: "release/1.1", merged: false, createdAt: "2024-03-11" },
+    ],
+  },
+  {
+    repo: "repo-8",
+    branches: [
+      { name: "release/1.0", merged: true, mergedAt: "2024-03-04" },
+      { name: "release/1.1", merged: false, createdAt: "2024-03-10" },
+    ],
+  },
+  {
+    repo: "repo-9",
+    branches: [
+      { name: "release/1.0", merged: true, mergedAt: "2024-03-03" },
+      { name: "release/1.1", merged: false, createdAt: "2024-03-09" },
+    ],
+  },
+  {
+    repo: "repo-10",
+    branches: [
+      { name: "release/1.0", merged: true, mergedAt: "2024-03-02" },
+      { name: "release/1.1", merged: false, createdAt: "2024-03-08" },
+    ],
+  },
+  {
+    repo: "repo-11",
+    branches: [
+      { name: "release/1.0", merged: true, mergedAt: "2024-03-01" },
+      { name: "release/1.1", merged: false, createdAt: "2024-03-07" },
+    ],
+  },
+  {
+    repo: "repo-12",
+    branches: [
+      { name: "release/1.0", merged: true, mergedAt: "2024-02-28" },
+      { name: "release/1.1", merged: false, createdAt: "2024-03-06" },
+    ],
   },
 ];
 
