@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/pr-analytics/static/css/main.0f6320ad.css",
+    "main.js": "/pr-analytics/static/js/main.1b498408.js",
+    "static/js/453.b635e269.chunk.js": "/pr-analytics/static/js/453.b635e269.chunk.js",
+    "static/media/logo.svg": "/pr-analytics/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/pr-analytics/index.html",
+    "main.0f6320ad.css.map": "/pr-analytics/static/css/main.0f6320ad.css.map",
+    "main.1b498408.js.map": "/pr-analytics/static/js/main.1b498408.js.map",
+    "453.b635e269.chunk.js.map": "/pr-analytics/static/js/453.b635e269.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.0f6320ad.css",
+    "static/js/main.1b498408.js"
+  ]
+}
