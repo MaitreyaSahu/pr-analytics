@@ -27,6 +27,10 @@ import ReleaseBranchTracker from "./Components/TimeLine/ReleaseBranchTracker";
 import AppBar from "./Components/TimeLine/AppBar";
 import Leaderboard from "./Components/TimeLine/Leaderboard";
 import PRAnalyticsDashboard from "./Components/TimeLine/PRAnalyticsDashboard";
+import PRQualityAnalysis from "./Components/TimeLine/PRQualityAnalysis";
+import { mockPRData } from "./Services/getPRQualityAnalysis";
+import GitHubPRUI from "./Components/TimeLine/GitHubPRUI";
+import PullRequestGrid from "./Components/TimeLine/PullRequestGrid";
 
 function App() {
   const [filter, setFilter] = useState("");
@@ -68,8 +72,10 @@ function App() {
           </CardContent>
         </Card>
         <Card sx={{ width: "5000px", height: "100%" }}>
-          <CardContent sx={{ height: "100%", p: 2, pr: 1 }}>
+          <CardContent sx={{ height: "100%", p: 2, pr: 1, overflowY: "auto" }}>
             <PRAnalyticsDashboard />
+            <PullRequestGrid />
+            {/* <PRQualityAnalysis prData={mockPRData} /> */}
           </CardContent>
         </Card>
         <div className="overflow-y-auto w-full mr-1">
